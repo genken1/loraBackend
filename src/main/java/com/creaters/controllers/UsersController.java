@@ -62,10 +62,10 @@ public class UsersController {
         return user.getUser(id);
     }
 
-    //работает.
-    @RequestMapping(value = "/getuser", method=RequestMethod.GET)
+    //работает.!!!!!!!!!
+    @RequestMapping(value = "/getuserbyemail", method=RequestMethod.GET)
     public Users getUser(@RequestParam("email") String email){
-        return user.getUser(email);
+        return user.getUserByEmail(email);
     }
 
     //работает.
