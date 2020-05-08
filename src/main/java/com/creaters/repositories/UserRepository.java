@@ -30,6 +30,10 @@ public class UserRepository {
         return jdbcTemplate.queryForObject("SELECT * FROM public.\"Users\" WHERE\"id\"=?", new UsersMapper(), id);
     }
 
+    public Users getUser(String email) {
+        return jdbcTemplate.queryForObject("SELECT * FROM public.\"Users\" WHERE\"email\"=?", new UsersMapper(), email);
+    }
+
     public List<Users> getUsers() {
         return jdbcTemplate.query("SELECT * FROM public.\"Users\"", new UsersMapper());
     }
