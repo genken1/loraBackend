@@ -12,11 +12,14 @@ public class AchievementsRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public int createAchievement(String name) {
-        return jdbcTemplate.update("INSERT INTO public.\"Achievements\" (\"name\") VALUES (?)", name);
+    //new parameter(url)
+    public int createAchievement(String name, String url) {
+        return jdbcTemplate.update("INSERT INTO public.\"Achievements\" (\"name\", \"url\") VALUES (?, ?)", name, url);
     }
+
+    //new parameter(url)
     public int updateAchievement(Achievements achiv) {
-        return jdbcTemplate.update("UPDATE public.\"Achievements\" SET \"name\"=? WHERE \"id\" = ?", achiv.getName(), achiv.getId());
+        return jdbcTemplate.update("UPDATE public.\"Achievements\" SET \"name\"=?, \"url\"=? WHERE \"id\" = ?", achiv.getName(), achiv.getUrl(), achiv.getId());
     }
     public int deleteAchievement(Integer id) {
         return jdbcTemplate.update("DELETE FROM public.\"Achievements\" WHERE \"id\" = ?", id);

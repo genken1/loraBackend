@@ -12,12 +12,14 @@ public class UserRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public int createUser(String name, String last_name) {
-        return jdbcTemplate.update("INSERT INTO public.\"Users\" (\"name\", \"last_name\") VALUES (?, ?)", name, last_name);
+    //new parameter(email)
+    public int createUser(String name, String last_name, String email) {
+        return jdbcTemplate.update("INSERT INTO public.\"Users\" (\"name\", \"last_name\", \"email\") VALUES (?, ?, ?)", name, last_name, email);
     }
 
+    //new parameter(email)
     public int updateUser(Users user) {
-        return jdbcTemplate.update("UPDATE public.\"Users\" SET \"name\"=?, \"last_name\" = ? WHERE \"id\" = ?", user.getName(), user.getLastName(), user.getId());
+        return jdbcTemplate.update("UPDATE public.\"Users\" SET \"name\"=?, \"last_name\"=?, \"email\"=? WHERE \"id\" = ?", user.getName(), user.getLastName(), user.getEmail(), user.getId());
     }
 
     public int deleteUser(Integer id) {

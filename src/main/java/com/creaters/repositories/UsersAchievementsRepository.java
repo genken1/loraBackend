@@ -37,12 +37,13 @@ public class UsersAchievementsRepository {
         try {
             Connection connect = jdbcTemplate.getDataSource().getConnection();
             Statement stmt = connect.createStatement();
-            String sql = "SELECT \"Achievements\".\"id\",\"Achievements\".\"name\" FROM \"UsersAchievements\" LEFT JOIN \"Achievements\" ON \"UsersAchievements\".\"achievement_id\" = \"Achievements\".\"id\" WHERE \"UsersAchievements\".\"user_id\" = " + user_id.toString() + ";";
+            String sql = "SELECT \"Achievements\".\"id\",\"Achievements\".\"name\", \"Achievements\".\"url\" FROM \"UsersAchievements\" LEFT JOIN \"Achievements\" ON \"UsersAchievements\".\"achievement_id\" = \"Achievements\".\"id\" WHERE \"UsersAchievements\".\"user_id\" = " + user_id.toString() + ";";
             ResultSet rs = stmt.executeQuery(sql);
             while (rs.next()) {
                 json = new JSONObject();
                 json.put("id", rs.getInt("id"));
                 json.put("name", rs.getString("name"));
+                json.put("url", rs.getString("url"));
                 jsonArr.put(json);
             }
         } catch (SQLException e) {

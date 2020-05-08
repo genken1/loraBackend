@@ -13,6 +13,7 @@ public class AchievementsMapper implements RowMapper<Achievements> {
         Achievements achievement = new Achievements();
         achievement.setId(resultSet.getInt("id"));
         achievement.setName(resultSet.getString("name"));
+        achievement.setUrl(resultSet.getString("url"));
         return achievement;
     }
 }

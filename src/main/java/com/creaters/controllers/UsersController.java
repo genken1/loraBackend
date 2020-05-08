@@ -23,15 +23,17 @@ public class UsersController {
     public int createUser(@RequestBody String param){
         String name = null;
         String last_name = null;
+        String email = null;
         try{
             JSONObject json = new JSONObject(param);
             name = json.getString("name");
             last_name = json.getString("last_name");
+            email = json.getString("email");
         } catch (JSONException e) {
             e.getLocalizedMessage();
             return 0;
         }
-        return user.createUser(name, last_name);
+        return user.createUser(name, last_name, email);
     }
     //работает.
     @RequestMapping(value = "/update", method = RequestMethod.POST, consumes = "text/plain")
@@ -42,6 +44,7 @@ public class UsersController {
             us.setId(json.getInt("id"));
             us.setName(json.getString("name"));
             us.setLastName(json.getString("last_name"));
+            us.setEmail(json.getString("email"));
         } catch (JSONException e) {
             e.getLocalizedMessage();
             return 0;

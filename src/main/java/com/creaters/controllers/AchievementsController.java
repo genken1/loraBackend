@@ -22,17 +22,19 @@ public class AchievementsController {
     @RequestMapping(value = "/create", method = RequestMethod.PUT, consumes = "text/plain")
     public int createAchievement(@RequestBody String param) {
         String name = null;
+        String url = null;
         try {
             JSONObject json = new JSONObject(param);
             name = json.getString("name");
+            url = json.getString("url");
         } catch (JSONException e) {
             e.getLocalizedMessage();
             return 0;
         }
-        return achievementsRepo.createAchievement(name);
+        return achievementsRepo.createAchievement(name, url);
     }
 
-    //работает.
+    //работает
     @RequestMapping(value = "/update", method = RequestMethod.POST, consumes = "text/plain")
     public int updateAchievement(@RequestBody String param) {
         Achievements ach = new Achievements();
@@ -40,6 +42,7 @@ public class AchievementsController {
             JSONObject json = new JSONObject(param);
             ach.setId(json.getInt("id"));
             ach.setName(json.getString("name"));
+            ach.setUrl(json.getString("url"));
         } catch (JSONException e) {
             e.getLocalizedMessage();
             return 0;
