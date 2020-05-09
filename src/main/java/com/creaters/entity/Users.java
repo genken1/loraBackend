@@ -6,7 +6,7 @@ public class Users {
 
     private Integer id;
     private String name;
-    private String lastName;
+    private String last_name;
     private String email;
 
     public void setId(Integer id) {
@@ -17,8 +17,8 @@ public class Users {
         this.name = name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
     public void setEmail(String email) { this.email = email; }
@@ -31,8 +31,8 @@ public class Users {
         return name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLast_name() {
+        return last_name;
     }
 
     public String getEmail() { return email; }

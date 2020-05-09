@@ -19,7 +19,7 @@ public class UsersController {
     private UserRepository user;
 
     //работает.
-    @RequestMapping(value = "/create", method = RequestMethod.PUT, consumes = "text/plain")
+    @RequestMapping(value = "/create", method = RequestMethod.POST, consumes = "text/plain")
     public int createUser(@RequestBody String param){
         String name = null;
         String last_name = null;
@@ -36,14 +36,14 @@ public class UsersController {
         return user.createUser(name, last_name, email);
     }
     //работает.
-    @RequestMapping(value = "/update", method = RequestMethod.POST, consumes = "text/plain")
+    @RequestMapping(value = "/update", method = RequestMethod.PUT, consumes = "text/plain")
     public int updateUser(@RequestBody String param){
         Users us = new Users();
         try{
             JSONObject json = new JSONObject(param);
             us.setId(json.getInt("id"));
             us.setName(json.getString("name"));
-            us.setLastName(json.getString("last_name"));
+            us.setLast_name(json.getString("last_name"));
             us.setEmail(json.getString("email"));
         } catch (JSONException e) {
             e.getLocalizedMessage();

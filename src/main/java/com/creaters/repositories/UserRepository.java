@@ -19,7 +19,7 @@ public class UserRepository {
 
     //new parameter(email)
     public int updateUser(Users user) {
-        return jdbcTemplate.update("UPDATE public.\"Users\" SET \"name\"=?, \"last_name\"=?, \"email\"=? WHERE \"id\" = ?", user.getName(), user.getLastName(), user.getEmail(), user.getId());
+        return jdbcTemplate.update("UPDATE public.\"Users\" SET \"name\"=?, \"last_name\"=?, \"email\"=? WHERE \"id\" = ?", user.getName(), user.getLast_name(), user.getEmail(), user.getId());
     }
 
     public int deleteUser(Integer id) {

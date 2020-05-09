@@ -19,7 +19,7 @@ public class AchievementsController {
     private AchievementsRepository achievementsRepo;
 
     //работает.
-    @RequestMapping(value = "/create", method = RequestMethod.PUT, consumes = "text/plain")
+    @RequestMapping(value = "/create", method = RequestMethod.POST, consumes = "text/plain")
     public int createAchievement(@RequestBody String param) {
         String name = null;
         String url = null;
@@ -35,7 +35,7 @@ public class AchievementsController {
     }
 
     //работает
-    @RequestMapping(value = "/update", method = RequestMethod.POST, consumes = "text/plain")
+    @RequestMapping(value = "/update", method = RequestMethod.PUT, consumes = "text/plain")
     public int updateAchievement(@RequestBody String param) {
         Achievements ach = new Achievements();
         try {
