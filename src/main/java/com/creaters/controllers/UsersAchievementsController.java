@@ -15,7 +15,7 @@ public class UsersAchievementsController {
     private UsersAchievementsRepository userAchievements;
     //Работает.
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public int createUserAchievements(@RequestBody String param) {
+    public int createUserAchievements(@RequestBody JSONObject param) {
         Integer userId = null;
         Integer achievementId = null;
         try {
