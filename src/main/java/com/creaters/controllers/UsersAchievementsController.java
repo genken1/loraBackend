@@ -3,6 +3,7 @@ package com.creaters.controllers;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import com.creaters.repositories.UsersAchievementsRepository;
 
@@ -14,7 +15,8 @@ public class UsersAchievementsController {
     @Autowired
     private UsersAchievementsRepository userAchievements;
     //Работает.
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/create", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     public int createUserAchievements(@RequestBody String param) {
         Integer userId = null;
         Integer achievementId = null;
