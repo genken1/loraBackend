@@ -14,7 +14,7 @@ public class UsersAchievementsController {
     @Autowired
     private UsersAchievementsRepository userAchievements;
     //Работает.
-    @RequestMapping(value = "/create", method = RequestMethod.PUT)
+    @RequestMapping(value = "/create", method = RequestMethod.POST)
     public int createUserAchievements(@RequestBody String param) {
         Integer userId = null;
         Integer achievementId = null;
