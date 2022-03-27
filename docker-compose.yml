@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+
+  postgres:
+    image: postgres:13
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: lora
+      POSTGRES_PASSWORD: lora
+
+  backend:
+    image: lora-backend:latest
+    container_name: backend
+    build:
+      context: .
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/lora
+      SPRING_DATASOURCE_USERNAME: lora
+      SPRING_DATASOURCE_PASSWORD: lora
+
+volumes:
+  postgres_data:
+    driver: local
